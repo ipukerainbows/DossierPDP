@@ -5,7 +5,8 @@ using System.Threading.Tasks;
 
 namespace DossierPDP.Models.repositories
 {
-    public class IDossierRepository
+    public interface IDossierRepository
     {
+        IEnumerable<Dossier> GetAllDossier();
     }
 }

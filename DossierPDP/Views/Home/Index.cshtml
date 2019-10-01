@@ -1,8 +1,18 @@
-﻿@{
+﻿@model IEnumerable<Dossier>
+
+@{
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome to the pdp Application</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+@foreach (var dossier in Model)
+{
+
+
+    <div class="card m-3" style="min-width: 18rem; max-width:30.5%">
+        <div class="card-header">
+            <h3>@dossier.DossierId</h3>
+            <h3>@dossier.DossierName</h3>
+            <hr />
+        </div>
+    </div>
+}

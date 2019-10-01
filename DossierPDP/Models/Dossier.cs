@@ -9,13 +9,14 @@ namespace DossierPDP.Models
     {
         public int DossierId { get; set; }
         public string DossierName { get; set; }
-        public List<Organiser> OrganiserList{ get; set; }
         public int CustomerId { get; set; }
         public PartyType PartyType { get; set; }
         public DateTime DatePlanned { get; set; }
         public int Budget { get; set; }
         public Room Room { get; set; }
 
-        public List<>  { get; set; }
+        public List<Organiser> DossierOrganisersList { get; set; }
+        public List<Diner> DossierDinersList  { get; set; }
+        public List<Reception> DossierReceptionsList { get; set; }
     }
 }

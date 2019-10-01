@@ -11,16 +11,8 @@ namespace DossierPDP.Controllers
     public class HomeController : Controller
     {
         public IActionResult Index()
-        {
-            Dossier dossier1 = new Dossier
-            {
-                IdDossier = 1,
-                Name = "PirateParty",
-                CustomerID = 1,
-                PartyType = PartyType.optie1
-            };
-
-            return View("DetailsDossier", dossier1);
+        {       
+            return View();
         }
 
         public IActionResult Privacy()

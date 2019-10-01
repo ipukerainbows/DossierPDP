@@ -1,10 +1,8 @@
 ﻿namespace DossierPDP.Models
 {
-    public enum Room
+    public class Room
     {
-        Zaal1,
-        Zaal2,
-        Zaal3,
-        Zaal4
+        public int RoomId { get; set; }
+        public string RoomName { get; set; }
     }
 }

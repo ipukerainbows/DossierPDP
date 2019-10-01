@@ -7,14 +7,13 @@ namespace DossierPDP.Models
 {
     public class Dossier
     {
-        public int Id { get; set; }
-        public string Name { get; set; }
+        public int IdDossier { get; set; }
         public int CustomerID { get; set; }
+        public string Name { get; set; }
         public PartyType PartyType { get; set; }
+        public DateTime DatePlanned { get; set; }
+        public int Budget { get; set; }
+        public Room Room { get; set; }
 
-        public override string ToString()
-        {
-            return "Dossier : " + Id + " " + Name + " Customer : " + CustomerID + " " + PartyType;
-        }
     }
 }

@@ -14,7 +14,7 @@ namespace DossierPDP.Controllers
         {
             Dossier dossier1 = new Dossier
             {
-                Id = 1,
+                IdDossier = 1,
                 Name = "PirateParty",
                 CustomerID = 1,
                 PartyType = PartyType.optie1

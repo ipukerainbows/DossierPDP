@@ -27,7 +27,7 @@ namespace DossierPDP.Controllers
         [HttpPost]
         public IActionResult CreateDossier()
         {
-            return View("success");
+            return View("DossierView");
         }
 
         [HttpGet]

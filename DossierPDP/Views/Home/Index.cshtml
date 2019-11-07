@@ -7,7 +7,7 @@
     <div class="container">
 
         <div class="row">
-            <a asp-controller="Home" asp-action="CreateDossier" class="btn btn-primary">Create new</a>
+            <a asp-controller="Home" asp-action="DossierChooseCustomer" class="btn btn-primary">Create new</a>
         </div>
 
         @foreach (var dossier in Model)
@@ -21,7 +21,6 @@
                     <h3>@dossier.CustomerId</h3>
                     <h3>@dossier.Budget</h3>
                 </div>
-
             </div>
             <hr />
         }

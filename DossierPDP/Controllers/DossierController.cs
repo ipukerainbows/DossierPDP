@@ -41,13 +41,19 @@ namespace DossierPDP.Controllers
                 ViewBag.Dossier = newDossier;
                 ViewBag.Rooms = roomRepository.GetAllRoom();
             }
-            return View("DossierView");
+            return View("DossierBase");
         }
 
         [HttpGet]
         public IActionResult DossierCreate()
         {
             return View();
+        }
+
+        [HttpPost]
+        public IActionResult DossierUpdate(Dossier model)
+        {
+            return View("DossierDetails");
         }
         
     }

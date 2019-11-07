@@ -13,13 +13,13 @@ namespace DossierPDP.Controllers
     public class HomeController : Controller
     {
         private readonly IDossierRepository _dossierRepository;
-        private readonly IHostingEnvironment hostingEnvironment;
+        private readonly IHostingEnvironment _hostingEnvironment;
 
         public HomeController(IDossierRepository dossierRepository,
                        IHostingEnvironment hostingEnvironment)
         {
             _dossierRepository = dossierRepository;
-            this.hostingEnvironment = hostingEnvironment;
+            _hostingEnvironment = hostingEnvironment;
         }
 
         public IActionResult Index()

@@ -40,7 +40,7 @@ namespace DossierPDP.Controllers
         }
 
         [HttpGet]
-        public IActionResult CreateDossier()
+        public IActionResult DossierCreate()
         {
             return View();
         }

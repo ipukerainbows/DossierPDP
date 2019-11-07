@@ -37,8 +37,9 @@ namespace DossierPDP.Controllers
                     DatePlanned = model.DatePlanned,
                     Budget = model.Budget
                 };
-
+                IRoomRepository roomRepository = new RoomMockRepository();
                 ViewBag.Dossier = newDossier;
+                ViewBag.Rooms = roomRepository.GetAllRoom();
             }
             return View("DossierView");
         }

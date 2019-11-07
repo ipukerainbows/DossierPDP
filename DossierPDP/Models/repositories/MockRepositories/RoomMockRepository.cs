@@ -13,7 +13,7 @@ namespace DossierPDP.Models.repositories
             _roomList = new List<Room>()
             {
                 new Room() { RoomId = 1, RoomName = "Orangerie"},
-                new Room() { RoomId = 2, RoomName = "Feestaal"},
+                new Room() { RoomId = 2, RoomName = "Voorzaal"},
                 new Room() { RoomId = 3, RoomName = "Tuin"}
             };
         }

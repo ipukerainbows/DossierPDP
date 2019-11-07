@@ -10,44 +10,26 @@ using Microsoft.AspNetCore.Hosting;
 
 namespace DossierPDP.Controllers
 {
-    [Controller]
     [Route("")]
+    [Route("[controller]")]
     public class HomeController : Controller
     {
         private readonly IDossierRepository _dossierRepository;
-        private readonly ICustomerRepository _customerRepository;
         private readonly IHostingEnvironment _hostingEnvironment;
 
-        public HomeController(IDossierRepository dossierRepository, ICustomerRepository customerRepository,
+        public HomeController(IDossierRepository dossierRepository,
                        IHostingEnvironment hostingEnvironment)
         {
-            _customerRepository = customerRepository; 
             _dossierRepository = dossierRepository;
             _hostingEnvironment = hostingEnvironment;
         }
 
+        [Route("")]
         public IActionResult Index()
         {
-            IEnumerable<Dossier>model = _dossierRepository.GetAllDossier();
+            IEnumerable<Dossier> model = _dossierRepository.GetAllDossier();
             return View(model);
         }
 
-        public IActionResult Privacy()
-        {
-            return View();
-        }
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        }
-
-        [HttpGet]
-        public IActionResult DossierChooseCustomer()
-        {
-            // IEnumerable<Dossier> model = _customerRepository.GetAllDossier();
-            return View();
-        }
     }
 }

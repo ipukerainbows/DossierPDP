@@ -9,6 +9,17 @@
 <body>
     <div class="container">
         <h1>@ViewData["Title"]</h1>
-        <p>Successfully created the dossier</p>
+        @{
+        Dossier dossier = ViewBag.Dossier;
+        }
+        <p>Name: @dossier.DossierName</p>
+        <p>Klant ID: @dossier.CustomerId</p>
+        <p>Soort feest: @dossier.PartyType</p>
+        <p>Datum: @dossier.DatePlanned.ToShortDateString()</p>
+        <p>Budget: € @dossier.Budget</p>
+        <form enctype="multipart/form-data" asp-controller="Dossier" asp-action="DossierChangeDetails" method="post" class="mt-3">
+            <div class="form-group row">
+            </div>
+        </form>
     </div>
 </body>

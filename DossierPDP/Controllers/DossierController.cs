@@ -25,8 +25,21 @@ namespace DossierPDP.Controllers
             _hostingEnvironment = hostingEnvironment;
         }
         [HttpPost]
-        public IActionResult CreateDossier()
+        public IActionResult DossierCreate(Dossier model)
         {
+            if (ModelState.IsValid)
+            {
+                Dossier newDossier = new Dossier
+                {
+                    DossierName = model.DossierName,
+                    CustomerId = model.CustomerId,
+                    PartyType = model.PartyType,
+                    DatePlanned = model.DatePlanned,
+                    Budget = model.Budget
+                };
+
+                ViewBag.Dossier = newDossier;
+            }
             return View("DossierView");
         }
 

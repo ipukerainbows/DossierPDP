@@ -24,7 +24,7 @@ namespace DossierPDP.Controllers
 
         public IActionResult Index()
         {
-            IEnumerable<Dossier >model = _dossierRepository.GetAllDossier();
+            IEnumerable<Dossier>model = _dossierRepository.GetAllDossier();
             return View(model);
         }
 

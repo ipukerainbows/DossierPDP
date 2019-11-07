@@ -3,16 +3,28 @@
 @{
     ViewData["Title"] = "Home Page";
 }
+    <body>
+        <row>
+            <div class="col-2">
+                <p> Test 1 </p>
+                <p> Test 2 </p>
+            </div>
+            <div class="col-2">
+                <p> Test 1 </p>
+                <p> Test 2 </p>
+            </div>
 
-@foreach (var dossier in Model)
-{
-
-
-    <div class="card m-3" style="min-width: 18rem; max-width:30.5%">
-        <div class="card-header">
-            <h3>@dossier.DossierId</h3>
-            <h3>@dossier.DossierName</h3>
-            <hr />
-        </div>
-    </div>
-}
+            <div class="col-9">
+                @foreach (var dossier in Model)
+                {
+                    <div class="card m-3" style="min-width: 18rem; max-width:30.5%">
+                        <div class="card-header">
+                            <h3>@dossier.DossierId</h3>
+                            <h3>@dossier.DossierName</h3>
+                            <hr />
+                        </div>
+                    </div>
+                }
+            </div>
+        </row>
+    </body>

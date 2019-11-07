@@ -33,6 +33,8 @@ namespace DossierPDP
             });
 
             services.AddScoped<IDossierRepository, DossierMockRepository>();
+            services.AddScoped<ICustomerRepository, CustomerMockRepository>();
+            services.AddScoped<IRoomRepository, RoomMockRepository>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }

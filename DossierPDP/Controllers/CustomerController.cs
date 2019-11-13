@@ -20,7 +20,7 @@ namespace DossierPDP.Controllers
             _customerRepository = customerRepository;
         }
 
-        public IActionResult Customers()
+        public IActionResult Index()
         {
             IEnumerable<Customer> model = _customerRepository.GetAllCustomer();
             return View(model);
@@ -41,22 +41,11 @@ namespace DossierPDP.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create(CustomerCreateViewModel model)
+        public IActionResult Create(Customer customer)
         {
             if (ModelState.IsValid)
             {
-                Customer newCustomer = new Customer
-                {
-                    CustomerFirstName = model.CustomerFirstName,
-                    CustomerLastName = model.CustomerLastName,
-                    Email = model.Email,
-                    Telephonenumber = model.Telephonenumber
-                };
-
-                _customerRepository.Add(newCustomer);            
-
-                return RedirectToAction("customers");
-                //return RedirectToAction("customers", new { id = newCustomer.CustomerId });
+                Customer newCustomer = _customerRepository.Add(customer);
             }
             return View();
         }

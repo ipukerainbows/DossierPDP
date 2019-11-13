@@ -38,8 +38,9 @@ namespace DossierPDP
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-            services.AddScoped<IDossierRepository, DossierMockRepository>();
+            //Addding the Repositories
             services.AddScoped<ICustomerRepository, SQLCustomerRepository>();
+            services.AddScoped<IDossierRepository, DossierMockRepository>();  
             services.AddScoped<IRoomRepository, RoomMockRepository>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);

@@ -75,5 +75,21 @@ namespace DossierPDP.Controllers
             return View("DossierDetails");
         }
 
+        [HttpGet]
+        public IActionResult DossierKiesZaal()
+        {
+            return View();
+        }
+        [HttpGet]
+        public IActionResult DossierKiesReceptie()
+        {
+            return View();
+        }
+        [HttpGet]
+        public IActionResult DossierKiesDiner()
+        {
+            return View();
+        }
+
     }
 }

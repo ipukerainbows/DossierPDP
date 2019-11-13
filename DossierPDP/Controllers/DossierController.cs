@@ -42,7 +42,7 @@ namespace DossierPDP.Controllers
                 ViewBag.Diner = dinerRepository.GetAllDiner();
                 ViewBag.Dossier = newDossier;
                 ViewBag.Rooms = roomRepository.GetAllRoom();
-                Debug.WriteLine(newDossier.DatePlanned);
+
             }
             return View("DossierBase");
         }
@@ -67,14 +67,13 @@ namespace DossierPDP.Controllers
                     DatePlanned = model.DatePlanned,
                     Budget = model.Budget,
                     DossierRoomList = model.DossierRoomList,
-                    /*DossierReceptionsList = model.DossierReceptionsList,
-                    DossierRemarksList = model.DossierRemarksList
+                    /*DossierRemarksList = model.DossierRemarksList
                     DossierDinersList = model.DossierDinersList*/
                 };
                 ViewBag.Dossier = newDossier;
             }
             return View("DossierDetails");
         }
-        
+
     }
 }

@@ -38,8 +38,11 @@ namespace DossierPDP.Controllers
                     Budget = model.Budget
                 };
                 IRoomRepository roomRepository = new RoomMockRepository();
+                IDinerRepository dinerRepository = new DinerMockRepository();
+                ViewBag.Diner = dinerRepository.GetAllDiner();
                 ViewBag.Dossier = newDossier;
                 ViewBag.Rooms = roomRepository.GetAllRoom();
+                Debug.WriteLine(newDossier.DatePlanned);
             }
             return View("DossierBase");
         }
@@ -53,6 +56,23 @@ namespace DossierPDP.Controllers
         [HttpPost]
         public IActionResult DossierUpdate(Dossier model)
         {
+            if (ModelState.IsValid)
+            {
+
+                Dossier newDossier = new Dossier
+                {
+                    DossierName = model.DossierName,
+                    CustomerId = model.CustomerId,
+                    PartyType = model.PartyType,
+                    DatePlanned = model.DatePlanned,
+                    Budget = model.Budget,
+                    DossierRoomList = model.DossierRoomList,
+                    /*DossierReceptionsList = model.DossierReceptionsList,
+                    DossierRemarksList = model.DossierRemarksList
+                    DossierDinersList = model.DossierDinersList*/
+                };
+                ViewBag.Dossier = newDossier;
+            }
             return View("DossierDetails");
         }
         

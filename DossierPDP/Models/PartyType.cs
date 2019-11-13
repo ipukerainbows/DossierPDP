@@ -5,11 +5,11 @@ using System.Threading.Tasks;
 
 namespace DossierPDP.Models
 {
-   /* public class PartyType
-    {
-        public int PartyTypeId { get; set; }
-        public string PartyTypeName { get; set; }
-    }*/
+    /* public class PartyType
+     {
+         public int PartyTypeId { get; set; }
+         public string PartyTypeName { get; set; }
+     }*/
 
     public enum PartyType
     {

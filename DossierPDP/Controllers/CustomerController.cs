@@ -1,14 +1,16 @@
-﻿using System;
+﻿using DossierPDP.Models;
+using DossierPDP.Models.repositories;
+using DossierPDP.ViewModels;
+using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
-using DossierPDP.Models;
-using DossierPDP.Models.repositories;
-using Microsoft.AspNetCore.Mvc;
 
 namespace DossierPDP.Controllers
 {
-    [Route("[controller]")]
+    [Route("[controller]/[action]")]
     public class CustomerController : Controller
     {
         private readonly ICustomerRepository _customerRepository;
@@ -18,27 +20,45 @@ namespace DossierPDP.Controllers
             _customerRepository = customerRepository;
         }
 
-        [HttpGet] 
-        [Route("")]
-        public IActionResult Index()
+        public IActionResult Customers()
         {
-            return View();
+            IEnumerable<Customer> model = _customerRepository.GetAllCustomer();
+            return View(model);
         }
 
-        [HttpGet]
-        [Route("Customers")]
-        public IActionResult Customers() {
+        [Route("{id?}")]
+        public IActionResult Details(int Id)
+        {
 
-            IEnumerable<Customer> model = _customerRepository.GetAllCustomer(); 
+            Customer model = _customerRepository.GetCustomer(Id);
             return View(model);
         }
 
         [HttpGet]
-        [Route("Create")]
         public IActionResult Create()
         {
             return View();
         }
 
+        [HttpPost]
+        public IActionResult Create(CustomerCreateViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                Customer newCustomer = new Customer
+                {
+                    CustomerFirstName = model.CustomerFirstName,
+                    CustomerLastName = model.CustomerLastName,
+                    Email = model.Email,
+                    Telephonenumber = model.Telephonenumber
+                };
+
+                _customerRepository.Add(newCustomer);            
+
+                return RedirectToAction("customers");
+                //return RedirectToAction("customers", new { id = newCustomer.CustomerId });
+            }
+            return View();
+        }
     }
 }

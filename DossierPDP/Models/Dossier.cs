@@ -18,7 +18,7 @@ namespace DossierPDP.Models
         public List<Room> DossierRoomList { get; set; }
         public List<Organiser> DossierOrganisersList { get; set; }
         public List<Reception> DossierReceptionsList { get; set; }
-        public List<Diner> DossierDinersList  { get; set; }
+        public List<Diner> DossierDinersList { get; set; }
         public List<Reception> DossierRemarksList { get; set; }
 
     }

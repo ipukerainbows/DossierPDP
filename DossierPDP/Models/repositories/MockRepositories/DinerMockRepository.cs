@@ -12,7 +12,7 @@ namespace DossierPDP.Models.repositories
         {
             _dinerList = new List<Diner>()
             {
-              
+
             };
         }
 

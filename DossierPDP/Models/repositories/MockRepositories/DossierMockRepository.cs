@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace DossierPDP.Models.repositories
 {
-    public class DossierMockRepository :IDossierRepository
+    public class DossierMockRepository : IDossierRepository
     {
         private List<Dossier> _dossierList;
         public DossierMockRepository()

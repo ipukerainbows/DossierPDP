@@ -19,7 +19,7 @@ namespace DossierPDP.Models.repositories
 
         public IEnumerable<Reception> GetReceptions()
         {
-            return _receptionList; 
+            return _receptionList;
         }
     }
 }

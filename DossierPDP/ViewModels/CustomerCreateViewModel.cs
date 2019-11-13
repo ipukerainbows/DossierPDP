@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace DossierPDP.Models
+namespace DossierPDP.ViewModels
 {
-    public class Customer
+    public class CustomerCreateViewModel
     {
         public int CustomerId { get; set; }
         public string CustomerFirstName { get; set; }

@@ -32,6 +32,13 @@ namespace DossierPDP
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
+            services.AddDistributedMemoryCache();
+            services.AddSession(options =>
+            {
+                options.Cookie.HttpOnly = true;
+                options.Cookie.IsEssential = true;
+            });
+
             services.AddScoped<IDossierRepository, DossierMockRepository>();
             services.AddScoped<ICustomerRepository, CustomerMockRepository>();
             services.AddScoped<IRoomRepository, RoomMockRepository>();
@@ -55,6 +62,7 @@ namespace DossierPDP
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
+            app.UseSession();
             app.UseCookiePolicy();
 
             app.UseMvc(routes =>

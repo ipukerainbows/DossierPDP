@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Mvc;
 using DossierPDP.Models;
 using DossierPDP.Models.repositories;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
+using Newtonsoft.Json;
 
 namespace DossierPDP.Controllers
 {
@@ -37,12 +39,10 @@ namespace DossierPDP.Controllers
                     DatePlanned = model.DatePlanned,
                     Budget = model.Budget
                 };
-                IRoomRepository roomRepository = new RoomMockRepository();
                 IDinerRepository dinerRepository = new DinerMockRepository();
                 ViewBag.Diner = dinerRepository.GetAllDiner();
                 ViewBag.Dossier = newDossier;
-                ViewBag.Rooms = roomRepository.GetAllRoom();
-
+                HttpContext.Session.SetString("Dossier", JsonConvert.SerializeObject(newDossier));
             }
             return View("DossierBase");
         }
@@ -78,6 +78,10 @@ namespace DossierPDP.Controllers
         [HttpGet]
         public IActionResult DossierKiesZaal()
         {
+            Dossier tempDossier =JsonConvert.DeserializeObject<Dossier>(HttpContext.Session.GetString("Dossier"));
+            ViewBag.Dossier = tempDossier.DossierName;
+            IRoomRepository roomRepository = new RoomMockRepository();
+            ViewBag.Rooms = roomRepository.GetAllRoom();
             return View();
         }
         [HttpGet]

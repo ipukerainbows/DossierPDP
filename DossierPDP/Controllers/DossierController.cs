@@ -79,10 +79,31 @@ namespace DossierPDP.Controllers
         public IActionResult DossierKiesZaal()
         {
             Dossier tempDossier =JsonConvert.DeserializeObject<Dossier>(HttpContext.Session.GetString("Dossier"));
-            ViewBag.Dossier = tempDossier.DossierName;
+            ViewBag.Dossier = tempDossier;
             IRoomRepository roomRepository = new RoomMockRepository();
             ViewBag.Rooms = roomRepository.GetAllRoom();
             return View();
+        }
+        [HttpGet]
+        public IActionResult DossierKiesZaalTest(Room model)
+        {
+            if (ModelState.IsValid)
+            {
+                Debug.WriteLine(model.RoomName);
+                Dossier tempDossier = JsonConvert.DeserializeObject<Dossier>(HttpContext.Session.GetString("Dossier"));
+                if(tempDossier.DossierRoomList == null)
+                {
+                    tempDossier.DossierRoomList = new List<Room>();
+                    tempDossier.DossierRoomList.Add(model);
+                }
+                else
+                {
+                    tempDossier.DossierRoomList.Add(model);
+                }
+                HttpContext.Session.SetString("Dossier", JsonConvert.SerializeObject(tempDossier));
+                ViewBag.Dossier = tempDossier;
+            }
+            return View("DossierBase");
         }
         [HttpGet]
         public IActionResult DossierKiesReceptie()

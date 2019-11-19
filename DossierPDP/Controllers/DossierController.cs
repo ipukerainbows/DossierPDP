@@ -84,8 +84,8 @@ namespace DossierPDP.Controllers
             ViewBag.Rooms = roomRepository.GetAllRoom();
             return View();
         }
-        [HttpGet]
-        public IActionResult DossierKiesZaalTest(Room model)
+        [HttpPost]
+        public IActionResult DossierKiesZaal(Room model)
         {
             if (ModelState.IsValid)
             {

@@ -78,7 +78,7 @@ namespace DossierPDP.Controllers
         [HttpGet]
         public IActionResult DossierKiesZaal()
         {
-            Dossier tempDossier =JsonConvert.DeserializeObject<Dossier>(HttpContext.Session.GetString("Dossier"));
+            Dossier tempDossier = JsonConvert.DeserializeObject<Dossier>(HttpContext.Session.GetString("Dossier"));
             ViewBag.Dossier = tempDossier;
             IRoomRepository roomRepository = new RoomMockRepository();
             ViewBag.Rooms = roomRepository.GetAllRoom();
@@ -91,7 +91,7 @@ namespace DossierPDP.Controllers
             {
                 Debug.WriteLine(model.RoomName);
                 Dossier tempDossier = JsonConvert.DeserializeObject<Dossier>(HttpContext.Session.GetString("Dossier"));
-                if(tempDossier.DossierRoomList == null)
+                if (tempDossier.DossierRoomList == null)
                 {
                     tempDossier.DossierRoomList = new List<Room>();
                     tempDossier.DossierRoomList.Add(model);
@@ -128,12 +128,16 @@ namespace DossierPDP.Controllers
                 Dossier tempDossier = JsonConvert.DeserializeObject<Dossier>(HttpContext.Session.GetString("Dossier"));
                 if (tempDossier.DossierDinersList == null)
                 {
+                    Debug.WriteLine("Makes new Dinerlist");
                     tempDossier.DossierDinersList = new List<Diner>();
                     tempDossier.DossierDinersList.Add(model);
+                    Debug.WriteLine(tempDossier.DossierDinersList.Count);
                 }
                 else
                 {
+                    Debug.WriteLine("Already existing Dinerlist");
                     tempDossier.DossierDinersList.Add(model);
+                    Debug.WriteLine(tempDossier.DossierDinersList.Count);
                 }
                 HttpContext.Session.SetString("Dossier", JsonConvert.SerializeObject(tempDossier));
                 ViewBag.Dossier = tempDossier;

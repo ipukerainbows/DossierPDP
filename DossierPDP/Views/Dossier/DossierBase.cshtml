@@ -28,15 +28,17 @@
                 }
 
             }
-            if(dossier.DossierReceptionsList != null)
+            if (dossier.DossierDinersList != null)
             {
-                foreach(Diner d in dossier.DossierDinersList)
+
+                foreach (Diner d in dossier.DossierDinersList)
                 {
                     SelectedDiners.Add(d.DinerId);
 
                 }
 
             }
+
 
         }
         <div class="form-group row">
@@ -80,7 +82,7 @@
             <a href="/Dossier/DossierKiesZaal"><input type="button" class="btn btn-primary" value="Voeg zaal toe" /></a>
         </div>
         <div class="form-group row">
-            <label asp-for="DossierReceptionsList" class="col-sm-2 col-form-label">Zalen:</label>
+            <label asp-for="DossierReceptionsList" class="col-sm-4 col-form-label">Geselecteerde recepties:</label>
             <div class="col-sm-12">
                 <select class="form-control" asp-for="DossierReceptionsList"
                         asp-items="@(new SelectList(SelectedReceptions))" disabled></select>
@@ -99,5 +101,6 @@
         <div class="form-group row">
             <a href="/Dossier/DossierKiesDiner"><input type="button" class="btn btn-primary" value="Voeg diner toe" /></a>
         </div>
-        </div>
+    </div>
+
 </body>

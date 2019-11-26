@@ -131,7 +131,7 @@ namespace DossierPDP.Controllers
                     Debug.WriteLine("Makes new Dinerlist");
                     tempDossier.DossierDinersList = new List<Diner>();
                     tempDossier.DossierDinersList.Add(model);
-                    Debug.WriteLine(tempDossier.DossierDinersList.Count);
+                    Debug.WriteLine(tempDossier.DossierDinersList.ElementAt(0).DinerId);
                 }
                 else
                 {

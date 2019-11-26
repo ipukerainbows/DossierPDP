@@ -120,7 +120,7 @@ namespace DossierPDP.Controllers
             return View();
         }
         [HttpPost]
-        public IActionResult DossierKiesDiner(Diner model)
+        public IActionResult DossierDinerToevoegen(Diner model)
         {
             if (ModelState.IsValid)
             {
@@ -145,13 +145,15 @@ namespace DossierPDP.Controllers
             return View("DossierBase");
         }
         [HttpPost]
-        public IActionResult Details(IFormCollection formCollection)
+        public IActionResult DossierKiesDiner(IFormCollection formCollection)
         {
-            Debug.WriteLine(formCollection["DinerId"]);
+            String SelectedValue = formCollection["DinerId"];
+            Debug.WriteLine(SelectedValue);
             IDinerRepository dinerRepository = new DinerMockRepository();
             Dossier tempDossier = JsonConvert.DeserializeObject<Dossier>(HttpContext.Session.GetString("Dossier"));
             ViewBag.Dossier = tempDossier;
             ViewBag.Diner = dinerRepository.GetAllDiner();
+            ViewBag.Selected = SelectedValue;
             return View("DossierKiesDiner");
         }
 

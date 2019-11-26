@@ -144,6 +144,16 @@ namespace DossierPDP.Controllers
             }
             return View("DossierBase");
         }
+        [HttpPost]
+        public IActionResult Details(IFormCollection formCollection)
+        {
+            Debug.WriteLine(formCollection["DinerId"]);
+            IDinerRepository dinerRepository = new DinerMockRepository();
+            Dossier tempDossier = JsonConvert.DeserializeObject<Dossier>(HttpContext.Session.GetString("Dossier"));
+            ViewBag.Dossier = tempDossier;
+            ViewBag.Diner = dinerRepository.GetAllDiner();
+            return View("DossierKiesDiner");
+        }
 
     }
 }

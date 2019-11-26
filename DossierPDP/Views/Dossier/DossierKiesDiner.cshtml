@@ -23,7 +23,6 @@
             Kies diner voor Dossier: @dossier.DossierName
         </h1>
         <div class="col-sm-10">
-            <label asp-for="DinerId" class="col-sm-2 col-form-label">Diner</label>
             @using (Html.BeginForm("Details", "Dossier", FormMethod.Post, new { @name = "DinerForm" }))
             {
                 @Html.DropDownList("DinerId", new SelectList(DinerIdList), "Kies Diner", new { @id = "ddlDiner" })

@@ -113,7 +113,32 @@ namespace DossierPDP.Controllers
         [HttpGet]
         public IActionResult DossierKiesDiner()
         {
+            Dossier tempDossier = JsonConvert.DeserializeObject<Dossier>(HttpContext.Session.GetString("Dossier"));
+            ViewBag.Dossier = tempDossier;
+            IDinerRepository dinerRepository = new DinerMockRepository();
+            ViewBag.Diner = dinerRepository.GetAllDiner();
             return View();
+        }
+        [HttpPost]
+        public IActionResult DossierKiesDiner(Diner model)
+        {
+            if (ModelState.IsValid)
+            {
+                Debug.WriteLine(model.DinerId);
+                Dossier tempDossier = JsonConvert.DeserializeObject<Dossier>(HttpContext.Session.GetString("Dossier"));
+                if (tempDossier.DossierDinersList == null)
+                {
+                    tempDossier.DossierDinersList = new List<Diner>();
+                    tempDossier.DossierDinersList.Add(model);
+                }
+                else
+                {
+                    tempDossier.DossierDinersList.Add(model);
+                }
+                HttpContext.Session.SetString("Dossier", JsonConvert.SerializeObject(tempDossier));
+                ViewBag.Dossier = tempDossier;
+            }
+            return View("DossierBase");
         }
 
     }
